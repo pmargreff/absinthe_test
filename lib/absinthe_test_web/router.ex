@@ -5,7 +5,11 @@ defmodule AbsintheTestWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", AbsintheTestWeb do
-    pipe_through :api
-  end
+  forward "/api", Absinthe.Plug,
+    schema: AbsintheTest.Schema
+
+  forward "/graphiql",
+    Absinthe.Plug.GraphiQL,
+    schema: AbsintheTest.Schema,
+    interface: :simple
 end
