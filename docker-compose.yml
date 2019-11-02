@@ -1,0 +1,39 @@
+---
+version: '3'
+services:
+  db:
+    image: 'mdillon/postgis:11-alpine'
+    hostname: &pg_hostname db
+    volumes:
+      - 'db_data:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: &pg_username postgres
+      POSTGRES_PASSWORD: &pg_password postgres
+    ports:
+      - '5432:5432'
+  absinthe_test:
+    build:
+      context: .
+    networks:
+      reverse:
+        aliases:
+          - absinthe_test
+      default:
+        aliases:
+          - absinthe_test
+    depends_on:
+      - db
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/absinthe_test
+    environment:
+      ENV: development
+      ERF_AFLASG: '-kernel shell_history enabled'
+      POSTGRES_USERNAME: *pg_username
+      POSTGRES_PASSWORD: *pg_password
+      POSTGRES_HOSTNAME: *pg_hostname
+volumes:
+  db_data: {}
+networks:
+  reverse: {}
