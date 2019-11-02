@@ -1,8 +1,6 @@
 defmodule Resolvers.Book do
-
   def index(_parent, _args, _resolution) do
-    {:ok, [
-      %AbsintheTest.Book{}
-    ]}
+    books = AbsintheTest.Repo.all(AbsintheTest.Book)
+    {:ok, books}
   end
 end

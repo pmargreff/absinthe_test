@@ -5,11 +5,10 @@ defmodule AbsintheTestWeb.Router do
     plug :accepts, ["json"]
   end
 
-  forward "/api", Absinthe.Plug,
-    schema: AbsintheTest.Schema
+  forward "/api", Absinthe.Plug, schema: AbsintheTest.Schema
 
   forward "/graphiql",
-    Absinthe.Plug.GraphiQL,
-    schema: AbsintheTest.Schema,
-    interface: :simple
+          Absinthe.Plug.GraphiQL,
+          schema: AbsintheTest.Schema,
+          interface: :simple
 end

@@ -44,6 +44,9 @@ defmodule AbsintheTest.MixProject do
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
       {:absinthe_phoenix, "~> 1.4"},
+      {:dataloader, "~> 1.0.0"},
+      {:ex_machina, "~> 2.3"},
+      {:exprof, "~> 0.2.0"}
     ]
   end
 
