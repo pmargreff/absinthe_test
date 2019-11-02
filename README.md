@@ -1,19 +1,7 @@
 # AbsintheTest
 
-To start your Phoenix server:
+To run profiling tests with docker:
+- Build and run docker image with `docker-compose up`
+- When server is up you can run `docker-compose exec absinthe_test mix test > ~/profiling.out` to run tests with profiling, it will give the output for query tests at `profiling.out` file in your home dir.
+- Run server with `docker-compose exec absinthe_test mix phx.server` it should be available at `http://localhost:4000`
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
